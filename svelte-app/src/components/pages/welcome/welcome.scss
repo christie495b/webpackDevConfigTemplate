@@ -1,0 +1,50 @@
+body {
+  background-color: white;
+}
+
+#background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 50%;
+  height: 100%;
+  background: transparent linear-gradient(270deg, var(--unnamed-color-ffefba) 0%, #D3CCE3 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(270deg, #FFEFBA 0%, #D3CCE3 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 5px 5px 20px #00000029;
+  z-index: 1;
+}
+
+#content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  margin-top: 3rem;
+  .img-fluid.h{
+    width: 80%;
+  }
+}
+.h{
+  box-shadow: 5px 5px 20px #00000029;
+  border-radius: 20px;
+}
+
+
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    #background{
+      width:100%;
+    }
+  }
+}
+
+// @mixin desktop {
+//   @media (min-width: #{$desktop-width}) {
+//     @content
+//   }
+// }
