@@ -66,9 +66,9 @@ options: {},
 	],
 	devtool: prod ? false : 'source-map',
 	devServer: {
-		port: 8080,
-		historyApiFallback: {
-			index: 'index.html'
-		}
-	}
+    port: 8080,
+    historyApiFallback: {
+      index: 'index.html'
+    }
+  }
 };
