@@ -1,0 +1,26 @@
+.form-control.searchBar{
+    width: 264px;
+    height: 35px;
+    // background: var(--unnamed-color-ffefba) 0% 0% no-repeat padding-box;
+    background: #FFEFBA 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px !important;
+    opacity: 1;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 0px;
+    color: #595959;
+    opacity: 1;
+
+   
+}
+
+.search{
+    position: relative;
+    top: 11px;
+    left: -26px;
+    width: 13px;
+    height: 14px;
+    background: transparent url('./img/Page-1.svg') 0% 0% no-repeat padding-box;
+    opacity: 1;
+}

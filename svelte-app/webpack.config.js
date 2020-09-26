@@ -33,7 +33,7 @@ module.exports = {
 				}
 			},
 			{
-			test: /\.s[ac]ss$/i,
+				test: /\.s[ac]ss$/i,
 				use: [{
 					loader: prod ? MiniCssExtractPlugin.loader : 'style-loader', // inject CSS to page
 				}, {
@@ -41,16 +41,22 @@ module.exports = {
 				}, {
 					loader: 'postcss-loader', // Run postcss actions
 					options: {
-					plugins: function () { // postcss plugins, can be exported to postcss.config.js
-						return [
-						require('autoprefixer')
-						];
-					}
+						plugins: function () { // postcss plugins, can be exported to postcss.config.js
+							return [
+								require('autoprefixer')
+							];
+						}
 					}
 				}, {
 					loader: 'sass-loader' // compiles Sass to CSS
-				}]}
-			]
+				}]
+			},
+			{
+test: /.svg$/,
+loader: 'svg-url-loader',
+options: {},
+},
+		]
 	},
 	mode,
 	plugins: [
@@ -58,5 +64,11 @@ module.exports = {
 			filename: '[name].css'
 		})
 	],
-	devtool: prod ? false: 'source-map'
+	devtool: prod ? false : 'source-map',
+	devServer: {
+		port: 8080,
+		historyApiFallback: {
+			index: 'index.html'
+		}
+	}
 };

@@ -1,19 +1,24 @@
 <script>
     import { onDestroy } from 'svelte';
-    import { curRoute } from './store';
+    import { dashRoute } from './store';
     import router from './routes.js';
+    
     let component;
 
-    // console.trace("route.svelte",$curRoute, curRoute);
+   
 
-    const unsubscribe = curRoute.subscribe(value => {
+    const unsubscribe = dashRoute.subscribe(value => {
+
       component = router.filter(r => r.path === value)[0].component;
     })
     onDestroy(unsubscribe);
 
+    
+    
   </script>
   
   <style>
   </style>
   
-  <svelte:component this={component} />
+  <svelte:component this={component}  on:message  />
+

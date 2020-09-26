@@ -1,6 +1,6 @@
 <script>
   import "./welcome.scss";
-  import Link from '../../router/Link.svelte';
+  import Link from '../../components/router/Link.svelte';
 </script>
 
 <div id="layoutAuthentication">
