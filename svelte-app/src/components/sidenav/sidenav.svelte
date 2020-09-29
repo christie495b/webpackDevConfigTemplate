@@ -2,11 +2,17 @@
   import "./sidenav.scss";
   import Snbutton from "../snbutton/snbutton.svelte";
   import Link from "../../pages/dashboard/router/Link.svelte";
+  import { dashRoute } from '../../pages/dashboard/router/store/index.js';
 
   // images
   import upload from './assets/img/Icon-feather-upload.svg';
   import review from './assets/img/Icon feather-info.svg';
   import events from './assets/img/Icon feather-external-link.svg';
+
+  let url;
+  dashRoute.subscribe(value => {
+   url =  value;
+  })
 </script>
 
 <nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -17,16 +23,16 @@
       </Link>
     <!-- </a> -->
   </div>
-  <div class="bd-toc-item active">
+  <div class="bd-toc-item { url == '/events' || url == '/upload' || url == '/review'  ? 'active' : '' }">
     <a class="bd-toc-link" href="/">
-      <Snbutton className="btn-light btn-block active">ASSETS</Snbutton>
+      <Snbutton className="btn-light btn-block ">ASSETS</Snbutton>
       <!-- <Link  page={{path: '/dashboard', name: 'Dashboard'}}>ASSETS</Link> -->
     </a>
 
     <ul class="nav bd-sidenav subnav">
       <li>
         <Link  page={{path: '/upload', name: 'UploadAssets', className: 'bd-toc-link pt-4 d-flex justify-content-center'}}>
-          <button class="btn btn-light btn-block active d-flex justify-content-around align-items-center">
+          <button class="btn btn-light btn-block d-flex justify-content-around align-items-center { url == '/upload' ? 'active' : '' }">
             <img src={upload} alt="click icon to reiect to upload zip page"/>
             Upload Zip File
           </button>
@@ -34,7 +40,7 @@
       </li>
       <li>
         <Link  page={{path: '/review', name: 'ReviewAssets', className: 'bd-toc-link pt-4 d-flex justify-content-center'}}>
-          <button class="btn btn-light btn-block d-flex justify-content-around align-items-center">
+          <button class="btn btn-light btn-block d-flex justify-content-around align-items-center { url == '/review' ? 'active' : '' }">
             <img src={review} alt="click icon to reiect to upload zip page"/>
             Review files
           </button>
@@ -42,7 +48,7 @@
       </li>
       <li>
         <Link  page={{path: '/events', name: 'Events', className: 'bd-toc-link pt-4 d-flex justify-content-center'}}>
-          <button class="btn btn-light btn-block d-flex justify-content-around align-items-center">
+          <button class="btn btn-light btn-block d-flex justify-content-around align-items-center  { url == '/events' ? 'active' : '' }">
             <img src={events} alt="click icon to reiect to upload zip page"/>
             Events
           </button>

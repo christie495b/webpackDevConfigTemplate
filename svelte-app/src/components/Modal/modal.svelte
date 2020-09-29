@@ -5,7 +5,52 @@
 
     import { createEventDispatcher } from 'svelte';
 
-    
+    let alert =false, unique = false;
+
+
+    function sanitizeData(callback){
+      let dateNow = new Date(Date.now()).toString();
+      let name = document.getElementById('name').value;
+
+      if(name === ''){
+        return;
+      }
+
+      if(name !== ''){
+        let bannerDataRef = $bannerData;
+        unique = bannerDataRef.some(data => data.name  === name);
+        if(unique){
+          return true;
+        }
+      }
+
+      let width = document.getElementById('width').value;
+
+      if(width === ''){
+        return;
+      }
+
+      let height = document.getElementById('height').value;
+
+      if(height === ''){
+        return;
+      }
+
+      let lastModified = dateNow.substring(0, dateNow.length - 31),
+      dimension = width + 'x' + height;
+
+      
+
+      return {
+        "name" : name,
+        "dimension" : dimension,
+        "size" : "-",
+        "lastModified" : lastModified,
+        "files":[],
+        "events":[]
+      }
+
+    }
 
     const dispatch = createEventDispatcher();
     function closeModel() {
@@ -15,15 +60,15 @@
     }
     
     function saveData() {
-      let dataToUpdate = $bannerData;
-      let dateNow = new Date(Date.now()).toString();
-      
-      dataToUpdate.push({
-        "name" : document.getElementById('name').value,
-        "dimension" : document.getElementById('width').value + 'x' + document.getElementById('height').value,
-        "size" : "-",
-        "lastModified" : dateNow.substring(0, dateNow.length - 31)
-      }); 
+      let dataToUpdate = $bannerData,
+      updatedData = sanitizeData();
+      alert = updatedData === undefined ? true : false;
+      if(alert | unique){
+        return;
+      }
+
+
+      dataToUpdate.push(updatedData); 
       bannerData.set(dataToUpdate);
       closeModel();
     }
@@ -41,6 +86,12 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="alert alert-warning { alert ? '' : 'd-none'}" role="alert">
+            All input fields are required
+          </div>
+          <div class="alert alert-warning { unique ? '' : 'd-none'}" role="alert">
+            Please enter a uniquie name!
+          </div>
           <slot name="body">
             <p>Modal body text goes here.</p>
           </slot>
