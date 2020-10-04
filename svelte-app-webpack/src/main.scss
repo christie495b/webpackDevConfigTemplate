@@ -1,0 +1,23 @@
+
+$purple:  #acb6e5 !default;
+$yellow:  #FFEFBA;
+
+$primary:       $purple !default;
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700;800;900&display=swap');
+$font-family-sans-serif : 'Raleway', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+@import "~bootstrap/scss/bootstrap";
+
+
+$br1 : 0.75rem !important; 
+.rounded-1{
+    border-radius: $br1;
+}
+
+$br2 : 2rem !important; 
+.rounded-2{
+    border-radius: $br2;
+}
+
+
+
