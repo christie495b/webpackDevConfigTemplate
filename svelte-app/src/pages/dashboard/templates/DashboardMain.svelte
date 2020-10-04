@@ -9,7 +9,7 @@
 
   const dispatch = createEventDispatcher();
 
-  let per_page = 5;
+  let per_page = 4;
   let from = 1;
 
   let stateData = paginate($bannerData, per_page, from),

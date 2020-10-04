@@ -23,7 +23,7 @@
   </script>
 
 <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
+    <ul class="pagination justify-content-end pagination-sm">  
       <li class="page-item {current_page === 1 ? 'disabled' : ''}" >
         <span class="page-link"  tabindex="-1" aria-disabled="true" on:click="{() => changePage(current_page - 1)}">Previous</span>
       </li>

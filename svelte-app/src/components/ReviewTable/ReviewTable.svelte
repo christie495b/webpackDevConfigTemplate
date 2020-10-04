@@ -22,7 +22,7 @@
     }
 
     div.table-containers {
-        height: calc(100vh - 60vh);
+        height: calc(100vh - 48vh);
         overflow-y: hidden;
     }
 

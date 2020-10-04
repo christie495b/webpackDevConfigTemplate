@@ -122,7 +122,7 @@
   }
 </style>
 
-<section class="drop-area-conainer bg-primary pt-3 pb-3 rounded-2">
+<section class="drop-area-conainer bg-primary pt-3 pb-3 rounded-1">
   <div
     id="drop-area"
     class="d-flex justify-content-center align-items-stretch"

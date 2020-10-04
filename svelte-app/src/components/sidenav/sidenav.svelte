@@ -31,7 +31,7 @@
   </div>
   <div class="bd-toc-item { url == '/events' || url == '/upload' || url == '/review'  ? 'active' : '' }">
     <a class="bd-toc-link" href="/">
-      <Snbutton className="btn-primary btn-block ">ASSETS</Snbutton>
+      <Snbutton className=" btn-block { url == '/events' || url == '/upload' || url == '/review'  ? 'active btn-light' : 'btn-primary' }">ASSETS</Snbutton>
       <!-- <Link  page={{path: '/dashboard', name: 'Dashboard'}}>ASSETS</Link> -->
     </a>
 

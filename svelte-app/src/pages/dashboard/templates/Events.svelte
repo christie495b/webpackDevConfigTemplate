@@ -7,7 +7,7 @@
 
   let creativeName = $currentState.name;
 
-  let per_page = 1;
+  let per_page = 4;
   let from = 1;
 
   let eventsData = paginate($currentState.events, per_page, from),
@@ -37,6 +37,22 @@
     position: relative;
     top: -20px;
   }
+
+  .pagination-container{
+    position:relative;
+    top:-57px;
+  }
+
+  .arrow-left {
+    width: 0; 
+    height: 0; 
+    border-top: 21px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 34px solid #acb6e5;
+    position: absolute;
+    top: 288px;
+    left: 10px;
+  }
 </style>
 
 <DashboardHeader {creativeName} />
@@ -50,8 +66,11 @@
     START OVER
   </button>
 </Link>
+<div class="arrow-left"></div>
+
 
 {#if total > per_page}
+<section class="pagination-container">
   <Pagination
     {current_page}
     {last_page}
@@ -60,4 +79,5 @@
     {to}
     {total}
     on:change={(ev) => changePage({ page: ev.detail })} />
+  </section>
 {/if}

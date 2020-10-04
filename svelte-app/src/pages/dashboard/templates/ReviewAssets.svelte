@@ -11,7 +11,7 @@
   // let bannerData = $currentState;
 
   let from = 1,
-    per_page = 2;
+    per_page = 3;
 
   let bannerData = paginate($currentState.files, per_page, from),
     current_page = 1,
@@ -38,7 +38,24 @@
 <style>
   .review-to-events {
     position: relative;
-    top: -20px;
+    top: -28px;
+  }
+
+  .arrow-left {
+    width: 0; 
+    height: 0; 
+    border-top: 21px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 34px solid #acb6e5;
+    position: absolute;
+    top: 216px;
+    left: 10px;
+  }
+
+  .pagination-container{
+    position: relative;
+    top:-69px;
+    width: 26vw;
   }
 </style>
 
@@ -57,9 +74,10 @@
 </div>
 
 <ReviewTable {bannerData} />
+<div class="arrow-left"></div>
 
 <Link
-  page={{ path: '/events', name: 'Events', className: 'bd-toc-link d-flex justify-content-center' }}>
+  page={{ path: '/events', name: 'Events', className: 'bd-toc-link d-flex justify-content-end' }}>
   <button
     class="review-to-events btn btn-dark btn-block d-flex justify-content-around align-items-center">
     <!-- <img src={events} alt="click icon to reiect to upload zip page"/> -->
@@ -69,6 +87,7 @@
 </Link>
 
 {#if total > per_page}
+<section class="pagination-container">
   <Pagination
     {current_page}
     {last_page}
@@ -77,4 +96,5 @@
     {to}
     {total}
     on:change={(ev) => changePage({ page: ev.detail })} />
+</section>
 {/if}
